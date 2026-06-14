@@ -1,0 +1,42 @@
+{
+  "name": "bird-agent-skills",
+  "interface": {
+    "displayName": "BIRD Agent Skills",
+    "shortDescription": "Agent skills for BIRD routing daemon configuration, editor setup, and CI/CD workflows."
+  },
+  "plugins": [
+    {
+      "name": "bird-agent",
+      "source": {
+        "source": "local",
+        "path": "./bird-agent"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "birdcc-installer",
+      "source": {
+        "source": "local",
+        "path": "./birdcc-installer"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "birdcc-cicd",
+      "source": {
+        "source": "local",
+        "path": "./birdcc-cicd"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Coding"
+    }
+  ]
+}

@@ -17,6 +17,45 @@
 - `scripts/` — 仅使用 Python 标准库、可通过 `uv run` 运行的辅助脚本
 - `references/` — 聚焦的参考指南
 
+## 安装
+
+### Claude Code
+
+先添加 marketplace，再安装需要的 skill：
+
+```bash
+/plugin marketplace add bird-chinese-community/BIRD-skills
+/plugin install bird-agent@bird-skills
+/plugin install birdcc-installer@bird-skills
+/plugin install birdcc-cicd@bird-skills
+```
+
+### OpenAI Codex CLI
+
+```bash
+codex plugin marketplace add bird-chinese-community/BIRD-skills
+# 在 Codex 内使用 /plugins 安装 bird-agent、birdcc-installer 或 birdcc-cicd
+```
+
+### skills.sh
+
+```bash
+npx skills add bird-chinese-community/BIRD-skills
+```
+
+### agentskill.sh
+
+```bash
+npx @agentskill.sh/cli setup
+# 然后在任意 agent 会话中：
+/learn @bird-chinese-community/BIRD-skills
+```
+
+### 手动安装
+
+克隆仓库后，将需要的 skill 目录复制或软链到 agent 的 skills 目录（例如
+`~/.claude/skills/`、`~/.codex/skills/` 或 `.agents/skills/`）。
+
 ## 许可
 
 与 BIRD-LSP 项目采用相同的许可证（GNU GPL v3）。
