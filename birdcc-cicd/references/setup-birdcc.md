@@ -1,4 +1,4 @@
-# BIRDCC CI/CD Installation Reference
+# CI/CD Installation Reference
 
 This reference covers how to install and configure the `setup-birdcc` GitHub Action. Read it when
 the user asks how to add BIRD config validation to GitHub Actions, how to install `birdcc` in CI, or
@@ -6,7 +6,7 @@ how to cache pnpm dependencies with `setup-birdcc`.
 
 ## What setup-birdcc installs
 
-`setup-birdcc` is a GitHub Action that bootstraps the BIRDCC toolchain in CI:
+`setup-birdcc` is a GitHub Action that bootstraps the BIRD toolchain in CI:
 
 - Node.js and pnpm (optional)
 - `@birdcc/cli` (`birdcc`)

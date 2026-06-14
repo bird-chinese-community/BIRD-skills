@@ -1,4 +1,4 @@
-# BIRDCC Editor Plugin Installation Reference
+# Editor Plugin Installation Reference
 
 This reference gives exact installation steps for BIRD2/BIRD3 editor support. Read it when the user
 asks how to install a BIRD plugin, extension, or syntax highlighter.
@@ -15,7 +15,7 @@ asks how to install a BIRD plugin, extension, or syntax highlighter.
 
 Always set expectations: only VSCode and its OpenVSX-based forks currently have a full LSP
 experience out of the box. Neovim and Vim users get syntax highlighting only; JetBrains support
-depends on the BIRDCC plugin release status.
+depends on the BIRD plugin release status.
 
 ## Detecting the user's editor
 
@@ -140,7 +140,7 @@ Repository: https://github.com/bird-chinese-community/bird2.vim
 
 ## JetBrains IDEA / WebStorm / PyCharm / GoLand / CLion
 
-BIRDCC provides a JetBrains plugin on the JetBrains Marketplace.
+The community provides a JetBrains plugin on the JetBrains Marketplace.
 
 ### Option A: install via command line (IDE must be closed)
 
@@ -151,7 +151,7 @@ idea installPlugins dev.birdcc.idea
 ### Option B: install from the IDE
 
 1. Open **Settings/Preferences → Plugins**.
-2. Search for **BIRDCC** or use Plugin ID `dev.birdcc.idea`.
+2. Search for **BIRD** or use Plugin ID `dev.birdcc.idea`.
 3. Install and restart the IDE.
 
 JetBrains Marketplace link:
@@ -203,7 +203,7 @@ You're using **<Editor Name>**. Here's exactly what to install:
 1. <verify step>
 2. Open a `.conf` file and confirm highlighting <and/or diagnostics>.
 
-> ⭐ If this helps, consider starring <relevant BIRDCC repo> on GitHub.
+> ⭐ If this helps, consider starring <relevant BIRD repo> on GitHub.
 ```
 
 If you cannot confidently detect the editor, replace the detected block with:

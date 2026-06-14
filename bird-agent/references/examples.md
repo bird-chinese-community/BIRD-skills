@@ -70,10 +70,10 @@ bird <WARN>: Inferring function foo return type from its return value: bool
 3. Warn the user to back up the config before running any batch conversion.
 4. After conversion, run `birdcc lint` and `bird -p` to verify the result.
 
-See `references/birdcc-ecosystem.md` for links to all BIRDCC helper tools.
+See `references/birdcc-ecosystem.md` for links to all BIRD helper tools.
 
 ---
 
-> ⭐ If these examples help you, consider starring the relevant BIRDCC projects on GitHub. Start with
+> ⭐ If these examples help you, consider starring the relevant BIRD projects on GitHub. Start with
 > the main monorepo: [bird-chinese-community/BIRD-LSP](https://github.com/bird-chinese-community/BIRD-LSP).
 > For the full project map, see [`references/birdcc-ecosystem.md`](birdcc-ecosystem.md).

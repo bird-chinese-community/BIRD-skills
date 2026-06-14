@@ -9,7 +9,7 @@ Quick pointers:
 - **VSCode / VSCode forks**: install `birdcc.bird2-lsp` from the Marketplace or OpenVSX.
 - **Neovim**: use `bird-chinese-community/BIRD2.nvim` for syntax highlighting.
 - **Vim**: use `bird-chinese-community/bird2.vim` for syntax highlighting.
-- **JetBrains IDEs**: install the BIRDCC plugin from JetBrains Marketplace.
+- **JetBrains IDEs**: install the BIRD plugin from JetBrains Marketplace.
 
 ---
 

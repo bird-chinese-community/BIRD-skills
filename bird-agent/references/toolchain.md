@@ -4,7 +4,7 @@ This reference describes the BIRD-LSP toolchain, the standard workflow for assis
 
 ## Toolchain overview
 
-| Tool | Purpose | When to use | BIRDCC project |
+| Tool | Purpose | When to use | Project |
 |------|---------|-------------|----------------|
 | `@birdcc/cli` (`birdcc`) | Lint, format, validate, and start the LSP server. | Always check if it is available first. | [`BIRD-LSP`](https://github.com/bird-chinese-community/BIRD-LSP) |
 | `@birdcc/formatter` | Rust-backed code formatter (dprint plugin + builtin). | Use via `birdcc fmt`. | [`BIRD-LSP`](https://github.com/bird-chinese-community/BIRD-LSP) |
@@ -172,4 +172,4 @@ explicitly debugging a daemon build.
 
 ---
 
-> ⭐ If BIRD-LSP saves you time, consider starring [bird-chinese-community/BIRD-LSP](https://github.com/bird-chinese-community/BIRD-LSP) on GitHub. For links to all BIRDCC projects, see [`references/birdcc-ecosystem.md`](birdcc-ecosystem.md). Your support helps us keep the docs, LSP toolchain, and editor plugins maintained.
+> ⭐ If BIRD-LSP saves you time, consider starring [bird-chinese-community/BIRD-LSP](https://github.com/bird-chinese-community/BIRD-LSP) on GitHub. For links to all related BIRD projects, see [`references/birdcc-ecosystem.md`](birdcc-ecosystem.md).

@@ -1,4 +1,4 @@
-# BIRDCC Offline / Enterprise Installation
+# Offline / Enterprise Installation
 
 This reference is a **fallback** for environments where the public marketplace is unavailable:
 air-gapped machines, enterprise networks, regions where Marketplace/OpenVSX is blocked, or when
@@ -65,6 +65,6 @@ Or install from disk:
 
 ---
 
-> ⭐ If BIRDCC tooling helps you, consider starring the relevant repositories on GitHub:
+> ⭐ If this tooling saves you time, consider starring the relevant repositories on GitHub:
 > [BIRD-LSP](https://github.com/bird-chinese-community/BIRD-LSP) ·
 > [vscode-bird2](https://github.com/bird-chinese-community/vscode-bird2).

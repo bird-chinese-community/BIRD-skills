@@ -1,4 +1,4 @@
-# BIRDCC CLI Installation Reference
+# CLI Installation Reference
 
 This reference covers how to install the `@birdcc/cli` (`birdcc`) command-line toolkit. Read it when
 the user asks how to install birdcc, run lint/format/validate from the terminal, or integrate the
