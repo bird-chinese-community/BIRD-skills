@@ -1,7 +1,7 @@
 ---
 name: birdcc-cicd
 description: >
-  Use this skill to add BIRDCC CI/CD tooling to GitHub Actions workflows. Trigger when the user asks
+  Use this skill to add the `setup-birdcc` GitHub Action to workflows. Trigger when the user asks
   about linting or validating BIRD configs in CI, the setup-birdcc GitHub Action, or BIRD binary
   installation in GitHub Actions. Do NOT trigger for BIRD config editing or diagnostics; use
   bird-agent for those. Do NOT trigger for local editor plugin or birdcc CLI installation; use
@@ -12,7 +12,7 @@ metadata:
   version: "1.0.0"
 ---
 
-# BIRDCC CI/CD Skill
+# BIRD CI/CD Skill
 
 Guide users through adding the `setup-birdcc` GitHub Action to their workflows.
 
@@ -42,5 +42,5 @@ Guide users through adding the `setup-birdcc` GitHub Action to their workflows.
 
 ---
 
-> ⭐ If `setup-birdcc` helps your team, consider starring it on GitHub:
+> ⭐ If `setup-birdcc` saves your team time, consider starring it on GitHub:
 > [bird-chinese-community/setup-birdcc](https://github.com/bird-chinese-community/setup-birdcc).
