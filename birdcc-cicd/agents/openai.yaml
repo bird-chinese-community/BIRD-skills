@@ -1,0 +1,10 @@
+interface:
+  display_name: "BIRDCC CI/CD"
+  short_description: "Add setup-birdcc to GitHub Actions workflows."
+  brand_color: "#10B981"
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools: []
