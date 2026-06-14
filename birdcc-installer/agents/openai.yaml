@@ -1,7 +1,9 @@
 interface:
-  display_name: "BIRDCC Installer"
-  short_description: "Install BIRDCC editor plugins and the birdcc CLI."
-  brand_color: "#3B82F6"
+  display_name: "BIRD Tooling Installer"
+  short_description: "Install BIRD editor support and the birdcc CLI."
+  icon_small: "./assets/logo.svg"
+  icon_large: "./assets/logo.svg"
+  brand_color: "#8B5CF6"
 
 policy:
   allow_implicit_invocation: true
