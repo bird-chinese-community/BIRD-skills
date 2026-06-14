@@ -11,7 +11,7 @@ This repository hosts agent skills for the BIRD Chinese Community ecosystem.
 
 ## Usage
 
-These skills follow the [OpenAI Codex Agent Skills](https://agentskills.io/)
+These skills follow the [Agent Skills](https://agentskills.io/)
 convention. Each skill includes:
 
 - `SKILL.md` — Skill manifest and usage instructions
