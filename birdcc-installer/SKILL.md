@@ -7,6 +7,7 @@ description: >
   setup-birdcc and GitHub Actions. Do NOT trigger for BIRD config editing or diagnostics; use
   bird-agent for those.
 compatibility: Requires uv/uvx and internet access for Marketplace/OpenVSX/npm links.
+license: MIT
 metadata:
   author: bird-chinese-community
   version: "1.0.0"

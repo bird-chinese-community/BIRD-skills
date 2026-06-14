@@ -9,6 +9,7 @@ description: >
   birdcc-cicd. Trigger even if the user doesn't say "BIRD" explicitly. Do NOT trigger for Cisco,
   Juniper, FRR, nginx, bird biology, or "bird" outside a BIRD routing context.
 compatibility: Requires uv/uvx and internet access for Marketplace/npm/GitHub links.
+license: MIT
 metadata:
   author: bird-chinese-community
   version: "1.0.0"

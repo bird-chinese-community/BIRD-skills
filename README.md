@@ -61,4 +61,4 @@ directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, or `.agents/skills/`).
 
 ## License
 
-Same as the BIRD-LSP project (GNU GPL v3).
+[MIT](./LICENSE)

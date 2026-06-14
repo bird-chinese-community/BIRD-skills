@@ -58,4 +58,4 @@ npx @agentskill.sh/cli setup
 
 ## 许可
 
-与 BIRD-LSP 项目采用相同的许可证（GNU GPL v3）。
+[MIT](./LICENSE)

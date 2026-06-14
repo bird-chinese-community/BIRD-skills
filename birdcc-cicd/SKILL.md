@@ -7,6 +7,7 @@ description: >
   bird-agent for those. Do NOT trigger for local editor plugin or birdcc CLI installation; use
   birdcc-installer for those.
 compatibility: Requires a GitHub repository and write access to `.github/workflows/`.
+license: MIT
 metadata:
   author: bird-chinese-community
   version: "1.0.0"

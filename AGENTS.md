@@ -253,4 +253,4 @@ uv run bird-agent/scripts/run_birdcc.py lint bird-agent/evals/fixtures/bird.conf
 
 ## License
 
-Same as the BIRD-LSP project (see `README.md`).
+MIT (see `LICENSE`).
