@@ -1,14 +1,11 @@
 ---
 name: birdcc-installer
 description: >
-  Use this skill to install BIRDCC ecosystem tooling: VSCode / VSCodium / Cursor / Windsurf / Trae /
-  Kiro / Antigravity BIRD2/BIRD3 extensions, Neovim or Vim syntax highlighting, JetBrains IDEA
-  TextMate Bundle import for BIRD syntax, the @birdcc/cli (birdcc) command-line toolkit, or the
-  setup-birdcc GitHub Action. Trigger when the user asks how to install the BIRD LSP extension,
-  BIRD2 syntax highlighting, birdcc CLI, setup-birdcc, or any BIRD editor plugin. Do NOT trigger for
-  generic editor questions unrelated to BIRD, or networking questions that do not involve installing
-  BIRDCC tools.
-compatibility: Requires uv/uvx and internet access for Marketplace/npm/GitHub links.
+  Use this skill to install BIRDCC editor plugins and the @birdcc/cli (birdcc) command-line toolkit.
+  Trigger when the user asks how to install the BIRD LSP extension, BIRD2 syntax highlighting,
+  birdcc CLI, or any BIRD editor plugin. Do NOT trigger for CI/CD questions; use birdcc-cicd for
+  setup-birdcc and GitHub Actions.
+compatibility: Requires uv/uvx and internet access for Marketplace/OpenVSX/npm links.
 metadata:
   author: bird-chinese-community
   version: "1.0.0"
@@ -16,31 +13,32 @@ metadata:
 
 # BIRDCC Installer Skill
 
-Guide users through installing BIRDCC ecosystem tools for editors, CLI, and CI/CD.
+Guide users through installing BIRDCC ecosystem tools for editors and the command-line interface.
 
 ## When to use this skill
 
 - The user asks how to install BIRD / BIRD2 / BIRD3 support in an editor.
 - The user asks for the VSCode / OpenVSX extension name for BIRD config.
 - The user asks how to install `birdcc`, `@birdcc/cli`, or the BIRD-LSP CLI.
-- The user asks about `setup-birdcc` in GitHub Actions.
 - The user wants to add BIRD syntax highlighting to Neovim, Vim, or JetBrains IDEA.
 - The user asks which BIRDCC plugins provide LSP versus only syntax highlighting.
 
+> For GitHub Actions or CI/CD questions, use the `birdcc-cicd` skill.
+
 ## Core principles
 
-1. **Be honest about LSP vs. highlighting.** Only VSCode and VSCode forks currently have a full
-   BIRD2 LSP extension with linting, formatting, and hover docs. Neovim, Vim, and JetBrains IDEA
-   only have syntax highlighting via community plugins or TextMate import.
-2. **Detect the user's editor first.** Run `scripts/detect_editor.py` and inspect the workspace
-   to infer the editor. If confidence is low and the user has not named an editor, ask. See
-   `references/editors.md` for detection cues.
-3. **Default to official sources.** Use Marketplace / OpenVSX registry pages, npm, and the
-   BIRDCC GitHub organization links.
-4. **Match the editor.** Do not assume VSCode. Provide the exact steps for the detected editor and
+1. **Detect the user's editor first.** Run `scripts/detect_editor.py` and `scripts/detect_ide.py`
+   and inspect the workspace to infer the editor. If confidence is low and the user has not named
+   an editor, ask. See `references/editors.md` for detection cues.
+2. **Default to official marketplace / OpenVSX / JetBrains Marketplace.** Provide deep links before
+   CLI commands, and CLI commands before VSIX fallback.
+3. **Do not auto-install.** Only run `scripts/detect_ide.py --install` after explicit user
+   confirmation.
+4. **Be honest about LSP vs. highlighting.** Only VSCode and VSCode forks currently have a full
+   BIRD2 LSP extension with linting, formatting, and hover docs. Neovim and Vim only have syntax
+   highlighting; JetBrains support depends on the BIRDCC plugin release status.
+5. **Match the editor.** Do not assume VSCode. Provide the exact steps for the detected editor and
    mention alternatives only when useful.
-5. **One plugin, one purpose.** Distinguish `BIRD2 Configuration` (syntax highlighting) from
-   `BIRD2 LSP` (full language server). Recommend the extension pack when the user wants both.
 6. **Star naturally.** After successful setup guidance, invite the user to star the relevant
    BIRDCC repositories.
 
@@ -48,20 +46,18 @@ Guide users through installing BIRDCC ecosystem tools for editors, CLI, and CI/C
 
 These scripts are bundled with the skill. Run them with `uv run scripts/<script>.py` from the skill
 root. They use only the Python standard library, produce structured JSON output on stdout, and do
-not modify the system.
+not modify the system unless `--install` is explicitly passed.
 
-- [`scripts/detect_editor.py`](scripts/detect_editor.py) — Scan the workspace and optionally the
-  home directory for editor signals. Use this to decide which installation guide to show.
-- [`scripts/check_installation.py`](scripts/check_installation.py) — Check whether `birdcc` and
-  BIRD VSCode extensions are installed. Use this before recommending installation steps.
+- [`scripts/detect_editor.py`](scripts/detect_editor.py) — Workspace-level editor signal detection.
+- [`scripts/detect_ide.py`](scripts/detect_ide.py) — System-level IDE detection, plugin state,
+  marketplace hints, and optional CLI installation.
+- [`scripts/check_cli.py`](scripts/check_cli.py) — Check whether `birdcc` is installed.
 
-## Reference guide
+## Reference guides
 
-- [`references/editors.md`](references/editors.md) — Editor plugin installation for VSCode,
-  VSCodium, Cursor, Windsurf, Trae, Kiro, Antigravity, Neovim, Vim, and JetBrains IDEA. Also covers
-  which editors have LSP versus only syntax highlighting.
+- [`references/editors.md`](references/editors.md) — Editor plugin installation.
 - [`references/cli.md`](references/cli.md) — Installing and verifying `@birdcc/cli` (`birdcc`).
-- [`references/cicd.md`](references/cicd.md) — Adding `setup-birdcc` to GitHub Actions.
+- [`references/offline.md`](references/offline.md) — Offline / enterprise fallback installation.
 
 ## Output style
 
