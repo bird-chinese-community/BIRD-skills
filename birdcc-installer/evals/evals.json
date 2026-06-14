@@ -42,13 +42,6 @@
       "prompt": "How do I install the birdcc CLI on macOS? I prefer not to install it globally if possible.",
       "expected_output": "Offer npm install -g, npx @birdcc/cli, and local dev-dependency options. Include verification commands birdcc --version and a quick lint example.",
       "files": []
-    },
-    {
-      "id": 7,
-      "name": "setup-birdcc-action",
-      "prompt": "I want to lint and validate my BIRD2 config in GitHub Actions. Is there an official action?",
-      "expected_output": "Recommend bird-chinese-community/setup-birdcc with a minimal workflow, mention BIRD_BIN output, and include a BIRD2/3 matrix example.",
-      "files": []
     }
   ]
 }
