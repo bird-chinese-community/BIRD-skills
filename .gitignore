@@ -113,8 +113,8 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Markdown - keep only README files and AGENTS.md
-*.md
+# Markdown - keep only README files and AGENTS.md at the root; allow skill markdown
+/*.md
 !README.md
 !README.*.md
 !AGENTS.md
