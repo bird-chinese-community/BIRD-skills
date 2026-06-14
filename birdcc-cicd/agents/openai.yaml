@@ -3,7 +3,7 @@ interface:
   short_description: "Add setup-birdcc to GitHub Actions workflows."
   icon_small: "./assets/logo.svg"
   icon_large: "./assets/logo.svg"
-  brand_color: "#10B981"
+  brand_color: "#1e1e1e"
 
 policy:
   allow_implicit_invocation: true
