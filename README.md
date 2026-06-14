@@ -1,12 +1,12 @@
-# BIRDCC Agent Skills
+# BIRD Agent Skills
 
-This repository hosts agent skills for the BIRD Chinese Community ecosystem.
+This repository hosts agent skills for BIRD routing configuration, editor setup, and CI/CD workflows.
 
 ## Skills
 
 - [`bird-agent`](./bird-agent) — Write, validate, format, and debug BIRD (BIRD1/2/3) routing
   daemon configuration files.
-- [`birdcc-installer`](./birdcc-installer) — Install BIRDCC editor plugins and the `birdcc`
+- [`birdcc-installer`](./birdcc-installer) — Install BIRD editor support and the `birdcc`
   command-line toolkit.
 - [`birdcc-cicd`](./birdcc-cicd) — Add the `setup-birdcc` GitHub Action to CI/CD workflows.
 
