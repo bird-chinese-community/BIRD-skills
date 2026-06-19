@@ -2,7 +2,7 @@
 
 [English](./README.md) | [中文](./README.zh.md)
 
-[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE) [![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers) [![GitHub forks](https://img.shields.io/github/forks/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/forks)
+[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE) [![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers)
 
 > Agent skills for writing, validating, formatting, and shipping BIRD (BIRD1/2/3) routing daemon configurations.
 

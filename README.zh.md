@@ -2,10 +2,7 @@
 
 [English](./README.md) | 中文
 
-[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/forks)
-[![Last commit](https://img.shields.io/github/last-commit/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/commits/main)
+[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE) [![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers)
 
 > 为 BIRD（BIRD1/2/3）路由守护进程提供编写、验证、格式化与 CI/CD 一站式支持的 Agent Skills。
 
@@ -44,7 +41,6 @@ Agent 会自动匹配对应 Skill，按需运行 `birdcc lint` / `fmt`、通过 
 ```prompt
 阅读 https://raw.githubusercontent.com/bird-chinese-community/BIRD.skills/main/INSTALL.zh.md 并根据我的 Agent 平台安装 BIRD skills。
 ```
-
 
 ## 安全提示
 
