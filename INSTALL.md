@@ -5,13 +5,13 @@ There are three ways to install these skills. Pick the one that matches your age
 | Method             | Best for                                                                                                                          | What you get                                                   |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | **Plugin install** | Harnesses that support plugins (Claude Code, Codex CLI, Antigravity, Gemini CLI, Kimi Code, Pi, Factory Droid, Copilot CLI)       | Native install for a single harness; pick the skills you want. |
-| **Skills install** | Any harness supported by `skills.sh` (universal `.agents/skills` plus 17+ agents including Cursor, OpenCode, Kimi Code CLI, etc.) | One command, then choose which agents receive the skills.      |
+| **Skills install** | Any harness supported by `skills.sh` (universal `.agents/skills` plus 60+ agents including Cursor, OpenCode, Kimi Code CLI, etc.) | One command, then choose which agents receive the skills.      |
 | **Manual install** | Platforms not covered by plugin or `skills.sh`                                                                                    | Copy or symlink the skill folders yourself.                    |
 
 > **Recommendation:**
 >
 > - Please use **plugin install** whenever possible for the best experience and update support.
-> - When plugin install is not available, use **skills install** as a quick fallback. This is especially useful if you use multiple agent platforms.
+> - When a plugin install is not available, use **skills install** as a quick fallback. This is especially useful if you use multiple agent platforms.
 > - Use **manual install** only when neither of the above covers your harness.
 
 ## 1. Prerequisites
@@ -85,6 +85,8 @@ Update later:
 gemini extensions update BIRD.skills
 ```
 
+> Note: Google is sunsetting Gemini CLI in favor of Antigravity CLI. New users should consider installing via Antigravity instead.
+
 ### GitHub Copilot CLI
 
 Register the marketplace:
@@ -96,10 +98,12 @@ copilot plugin marketplace add bird-chinese-community/BIRD.skills
 Install the skills:
 
 ```bash
-copilot plugin install bird-agent@bird-chinese-community/BIRD.skills
-copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
-copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
+copilot plugin install bird-agent@bird-skills
+copilot plugin install birdcc-installer@bird-skills
+copilot plugin install birdcc-cicd@bird-skills
 ```
+
+> If `@bird-skills` does not match the marketplace alias shown by `copilot plugin marketplace add`, use that alias instead.
 
 ### Kimi Code
 
@@ -129,7 +133,7 @@ If your harness does not support plugins, use `skills.sh` as a quick fallback. T
 npx -y skills@latest add bird-chinese-community/BIRD.skills --skill bird-agent --skill birdcc-cicd --skill birdcc-installer -a <AGENT_NAME> -y
 ```
 
-> Replace `<AGENT_NAME>` with any agent listed in the [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (please read this first), such as `claude`, `codex`, `antigravity`, etc.
+> Replace `<AGENT_NAME>` with any agent listed in the [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (please read this first), such as `claude-code`, `codex`, `antigravity`, etc.
 >
 > You can also use `-g` to install skills globally (recommended). If you have multiple agents, pass multiple `-a` arguments to specify which agents receive the skills.
 >
@@ -149,7 +153,7 @@ If neither plugins nor `skills.sh` work for your harness (for example, Cursor or
 
 2. Symlink the skill folders you need into your agent's skills directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, `~/.agents/skills/`, `~/.cursor/skills/`).
 
-3. Clear caches and instruct the user to restart the agent for the changes to take effect.
+3. Restart the agent. Some agents also need their skill cache cleared — check your agent's docs for the cache path (often `~/.<agent>/cache` or similar).
 
 ---
 

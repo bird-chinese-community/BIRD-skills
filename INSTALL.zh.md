@@ -5,13 +5,13 @@
 | 安装方式        | 适用平台                                                                                                       | 说明                                            |
 | --------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | **Plugin 安装** | 支持插件的平台（Claude Code、Codex CLI、Antigravity、Gemini CLI、Kimi Code、Pi、Factory Droid、Copilot CLI）   | 针对单个 Agent 的原生安装；可选择需要的 skill。 |
-| **Skills 安装** | `skills.sh` 支持的任意 Agent（通用 `.agents/skills` 及 17+ 个 Agent，包括 Cursor、OpenCode、Kimi Code CLI 等） | 一行命令安装，然后选择要部署到哪些 Agent。      |
+| **Skills 安装** | `skills.sh` 支持的任意 Agent（通用 `.agents/skills` 及 60+ 个 Agent，包括 Cursor、OpenCode、Kimi Code CLI 等） | 一行命令安装，然后选择要部署到哪些 Agent。      |
 | **手动安装**    | 不被 plugin 或 `skills.sh` 覆盖的极少数平台                                                                    | 手动复制或软链 skill 目录。                     |
 
 > **建议：**
 >
 > - 请尽可能使用 **Plugin 安装**，以获得最佳体验和后续更新支持。
-> - 当 Plugin 不适用时，使用 **Skills 安装** 作为快速降级方案，此方案尤其适合同时使用多个 Agent 平台的用户。
+> - 当 Plugin 安装不适用时，使用 **Skills 安装** 作为快速降级方案，此方案尤其适合同时使用多个 Agent 平台的用户。
 > - 两者都不支持时，才使用 **手动安装**。
 
 ## 1. 前置准备
@@ -85,6 +85,8 @@ gemini extensions install https://github.com/bird-chinese-community/BIRD.skills
 gemini extensions update BIRD.skills
 ```
 
+> 注意：Google 已逐步停止维护 Gemini CLI，推荐新用户直接通过 Antigravity 安装。
+
 ### GitHub Copilot CLI
 
 注册插件市场：
@@ -96,10 +98,12 @@ copilot plugin marketplace add bird-chinese-community/BIRD.skills
 安装 skills：
 
 ```bash
-copilot plugin install bird-agent@bird-chinese-community/BIRD.skills
-copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
-copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
+copilot plugin install bird-agent@bird-skills
+copilot plugin install birdcc-installer@bird-skills
+copilot plugin install birdcc-cicd@bird-skills
 ```
+
+> 如果 `@bird-skills` 与 `copilot plugin marketplace add` 显示的 marketplace 别名不一致，请使用该别名。
 
 ### Kimi Code
 
@@ -129,7 +133,7 @@ pi -e /path/to/BIRD.skills
 npx -y skills@latest add bird-chinese-community/BIRD.skills --skill bird-agent --skill birdcc-cicd --skill birdcc-installer -a <AGENT_NAME> -y
 ```
 
-> 其中 `<AGENT_NAME>` 必须替换为 [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (请先阅读此文档) 中的任意一个（例如 `claude`、`codex`、`antigravity` 等）。
+> 其中 `<AGENT_NAME>` 必须替换为 [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (请先阅读此文档) 中的任意一个（例如 `claude-code`、`codex`、`antigravity` 等）。
 >
 > 同时，你还可以选择 `-g` 以全局安装 Skills (推荐)，如有多个 Agent，可写入多个 `-a` 参数指定分发。
 >
@@ -149,7 +153,7 @@ npx -y skills@latest add bird-chinese-community/BIRD.skills --skill bird-agent -
 
 2. 将需要的 skill 目录使用「软链」方式链接到 Agent 的 skills 目录（例如 `~/.claude/skills/`、`~/.codex/skills/`、`~/.agents/skills/`、`~/.cursor/skills/`）。
 
-3. 清理缓存并指引用户重启 Agent 以使更改生效。
+3. 重启 Agent。部分 Agent 还需要清理 skill 缓存，具体路径请参考对应 Agent 的文档（通常是 `~/.<agent>/cache` 或类似目录）。
 
 ---
 
