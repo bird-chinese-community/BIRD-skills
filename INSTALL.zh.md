@@ -4,9 +4,9 @@
 
 | 安装方式        | 适用平台                                                                                          | 说明                                                    |
 | --------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| **Plugin 安装** | 支持插件的平台（Claude Code、Codex CLI、Antigravity、Gemini CLI、Pi、Factory Droid、Copilot CLI） | 推荐首选；可安装整个 bundle，也可以只启用需要的 skill。 |
-| **Skills 安装** | 任何支持 `skills.sh` 的平台                                                                       | 一行命令快速安装全部 skills。                           |
-| **手动安装**    | 不支持插件或 skills 的平台（Cursor、Kimi Code、OpenCode 等）                                      | 手动复制或软链 skill 目录。                             |
+| **Plugin 安装** | 支持插件的平台（Claude Code、Codex CLI、Antigravity、Gemini CLI、Kimi Code、Pi、Factory Droid、Copilot CLI） | 推荐首选；可安装整个 bundle，也可以只启用需要的 skill。 |
+| **Skills 安装** | 任何支持 `skills.sh` 的平台                                                                                | 一行命令快速安装全部 skills。                           |
+| **手动安装**    | 不支持插件或 skills 的平台（Cursor、OpenCode 等）                                                          | 手动复制或软链 skill 目录。                             |
 
 > **建议：** 优先尝试 **Plugin 安装**，控制权最大；如果你的平台不支持插件，退回到 **Skills 安装**；两者都不行时再使用 **手动安装**。
 
@@ -93,6 +93,14 @@ copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
 copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
 ```
 
+#### Kimi Code
+
+在 Kimi Code 中使用 `/plugins` 打开插件管理器，然后直接从本仓库安装：
+
+```bash
+/plugins install https://github.com/bird-chinese-community/BIRD.skills
+```
+
 #### Pi
 
 ```bash
@@ -117,7 +125,7 @@ npx skills add bird-chinese-community/BIRD.skills
 
 ### 手动安装
 
-如果 plugin 和 `skills.sh` 都不适用（例如 Cursor、Kimi Code 或 OpenCode），请克隆本仓库，然后将需要的 skill 目录复制或软链到 Agent 的 skills 目录（例如 `~/.claude/skills/`、`~/.codex/skills/`、`.agents/skills/`）。
+如果 plugin 和 `skills.sh` 都不适用（例如 Cursor 或 OpenCode），请克隆本仓库，然后将需要的 skill 目录复制或软链到 Agent 的 skills 目录（例如 `~/.claude/skills/`、`~/.codex/skills/`、`.agents/skills/`）。
 
 ---
 

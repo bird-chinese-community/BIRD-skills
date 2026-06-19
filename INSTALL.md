@@ -4,9 +4,9 @@ There are three ways to install these skills. Pick the one that matches your age
 
 | Method             | Best for                                                                                                         | What you get                                                        |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **Plugin install** | Harnesses that support plugins (Claude Code, Codex CLI, Antigravity, Gemini CLI, Pi, Factory Droid, Copilot CLI) | The full bundle; install all skills or pick only the ones you need. |
-| **Skills install** | Any harness that supports `skills.sh`                                                                            | A quick one-line install of all skills.                             |
-| **Manual install** | Harnesses without plugin or skills support (Cursor, Kimi Code, OpenCode, etc.)                                   | Copy or symlink the skill folders yourself.                         |
+| **Plugin install** | Harnesses that support plugins (Claude Code, Codex CLI, Antigravity, Gemini CLI, Kimi Code, Pi, Factory Droid, Copilot CLI) | The full bundle; install all skills or pick only the ones you need. |
+| **Skills install** | Any harness that supports `skills.sh`                                                                                     | A quick one-line install of all skills.                             |
+| **Manual install** | Harnesses without plugin or skills support (Cursor, OpenCode, etc.)                                                       | Copy or symlink the skill folders yourself.                         |
 
 > **Recommendation:** Try the **plugin install** first. It gives you the most control. If your harness does not support plugins, fall back to **skills install**. Use **manual install** only when neither of the above works.
 
@@ -93,6 +93,14 @@ copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
 copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
 ```
 
+#### Kimi Code
+
+Open Kimi Code's plugin manager with `/plugins`, then install directly from this repository:
+
+```bash
+/plugins install https://github.com/bird-chinese-community/BIRD.skills
+```
+
 #### Pi
 
 ```bash
@@ -117,7 +125,7 @@ You can still disable individual skills in your harness settings if you only nee
 
 ### Manual install
 
-If neither plugins nor `skills.sh` work for your harness (for example, Cursor, Kimi Code, or OpenCode), clone the repo and copy or symlink the skill folders into your agent's skills directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, `.agents/skills/`).
+If neither plugins nor `skills.sh` work for your harness (for example, Cursor or OpenCode), clone the repo and copy or symlink the skill folders into your agent's skills directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, `.agents/skills/`).
 
 ---
 
