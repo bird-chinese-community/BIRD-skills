@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import"],
+  "env": {
+    "node": true,
+    "es2022": true
+  },
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/filename-case": "off"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    ".git/",
+    "__pycache__/",
+    "*.py[cod]",
+    ".venv/",
+    ".uv/",
+    "docs/_build/",
+    "dist/",
+    "build/"
+  ]
+}

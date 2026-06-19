@@ -99,6 +99,11 @@ venv.bak/
 .uv/
 .python-version
 
+# Node.js
+node_modules/
+.oxlint-cache/
+.oxfmt-cache/
+
 # Ruff
 .ruff_cache/
 

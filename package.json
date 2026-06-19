@@ -1,0 +1,19 @@
+{
+  "name": "bird-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agent skills for BIRD routing daemon configuration, editor setup, and CI/CD workflows.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "fmt": "oxfmt .",
+    "fmt:check": "oxfmt --check .",
+    "check": "pnpm run lint && pnpm run fmt:check"
+  },
+  "devDependencies": {
+    "oxfmt": "0.55.0",
+    "oxlint": "1.70.0"
+  }
+}
