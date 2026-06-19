@@ -118,10 +118,12 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Markdown - keep only README files, AGENTS.md, and CHANGELOG.md at the root; allow skill markdown
+# Markdown - keep only README/INSTALL files, AGENTS.md, and CHANGELOG.md at the root; allow skill markdown
 /*.md
 !README.md
 !README.*.md
+!INSTALL.md
+!INSTALL.*.md
 !AGENTS.md
 !CHANGELOG.md
 
