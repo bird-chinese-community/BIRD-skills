@@ -10,13 +10,16 @@ CLI into a non-Node project.
 
 ```bash
 # npm
-npm install -g @birdcc/cli
+npm install -g @birdcc/cli@latest
 
 # pnpm
-pnpm add -g @birdcc/cli
+pnpm add -g @birdcc/cli@latest
 
 # yarn
-yarn global add @birdcc/cli
+yarn global add @birdcc/cli@latest
+
+# bun
+bun add -g @birdcc/cli@latest
 ```
 
 ### Option B: use npx without installing
@@ -82,13 +85,16 @@ birdcc lsp --stdio
 ## Updating
 
 ```bash
-npm update -g @birdcc/cli
-```
+npm update -g @birdcc/cli@latest
 
-or with pnpm:
+# or pnpm
+pnpm update -g @birdcc/cli@latest
 
-```bash
-pnpm update -g @birdcc/cli
+# or yarn
+yarn global upgrade @birdcc/cli@latest
+
+# or bun
+bun upgrade -g @birdcc/cli@latest
 ```
 
 ---
