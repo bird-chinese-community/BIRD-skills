@@ -1,0 +1,36 @@
+{
+  "name": "bird-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for BIRD routing daemon configuration, editor setup, and CI/CD workflows.",
+  "author": {
+    "name": "bird-chinese-community"
+  },
+  "homepage": "https://github.com/bird-chinese-community/BIRD.skills",
+  "license": "MIT",
+  "keywords": [
+    "bird",
+    "bird2",
+    "bird3",
+    "routing",
+    "bgp",
+    "ospf",
+    "birdcc",
+    "lsp",
+    "cicd",
+    "github-actions"
+  ],
+  "skills": "./",
+  "skillInstructions": "Kimi Code tool mapping for BIRD skills:\\n\\n- When a BIRD skill says to ask the user, ask clarifying questions, ask one question at a time, present multiple-choice options, use the terminal for a question, or wait for the user's choice, call Kimi Code's `AskUserQuestion` tool. Do not render those choices as plain assistant text unless `AskUserQuestion` is unavailable or the session is in auto permission mode.\\n- For `AskUserQuestion`, provide 1 question with 2-4 concrete options when possible. Put the recommended option first and suffix its label with `(Recommended)`.\\n- When a BIRD skill refers to `TodoWrite`, use Kimi Code's `TodoList` tool.\\n- When a BIRD skill says `Task tool (general-purpose)` or asks you to dispatch an implementer/reviewer subagent, use Kimi Code's `Agent` tool with a Kimi subagent type. Do not pass `general-purpose` as `subagent_type`.\\n- For implementation, code review, spec review, quality review, and filled BIRD subagent prompt templates, call `Agent` with `subagent_type: \"coder\"`, paste the fully filled prompt into `prompt`, and provide a short `description`.\\n- For read-only codebase exploration that would take several searches, use `Agent` with `subagent_type: \"explore\"`.\\n- For read-only planning or architecture design, use `Agent` with `subagent_type: \"plan\"`.\\n- Keep dependent subagent steps sequential. Use multiple `Agent` calls, or `run_in_background: true` only when the work is independent and background agents are available.\\n- When a BIRD skill refers to the `Skill` tool, use Kimi Code's native `Skill` tool.\\n- Use Kimi Code's `Read`, `Write`, `Edit`, `Bash`, `Grep`, `Glob`, `FetchURL`, `WebSearch`, and MCP tools by their actual exposed names.\\n- When a skill asks to search file contents, use `Grep`; when it asks to find files by path or pattern, use `Glob`; when it asks to fetch a URL, use `FetchURL`; when it asks to search the web, use `WebSearch`.",
+  "interface": {
+    "displayName": "BIRD Agent Skills",
+    "shortDescription": "Agent skills for BIRD routing daemon configuration, editor setup, and CI/CD workflows.",
+    "longDescription": "Provides BIRD1/2/3 config editing, validation, and formatting through the birdcc CLI; editor plugin installation guidance; and setup-birdcc GitHub Actions integration.",
+    "developerName": "bird-chinese-community",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/bird-chinese-community/BIRD.skills"
+  }
+}
