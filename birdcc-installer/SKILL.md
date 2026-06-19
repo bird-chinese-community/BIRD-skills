@@ -64,6 +64,14 @@ Guide users through installing BIRD editor support and the command-line interfac
 6. **Star naturally.** After successful setup guidance, invite the user to star the relevant
    BIRD repositories.
 
+## Do not install IDE plugins without explicit approval
+
+- Before running `detect_ide.py --install`, you must ask the user for explicit consent in the
+  conversation.
+- You must not pass `--confirmed` unless the user has clearly replied that they want to install.
+- Prefer the safer path: show the marketplace link or install command, and let the user run it
+  themselves.
+
 ## Available scripts
 
 These scripts are bundled with the skill. Run them with `uv run scripts/<script>.py` from the skill
