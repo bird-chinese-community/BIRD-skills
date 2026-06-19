@@ -185,7 +185,7 @@ If nothing happens:
    server logs.
 3. For Neovim/Vim, run `:set filetype?` and verify it says `bird2`.
 
-## Offline / 企业环境
+## Offline and Enterprise Environments
 
 If the marketplace is unavailable, see [`offline.md`](offline.md) for VSIX / plugin zip / private
 registry installation. This is a fallback, not the default path.

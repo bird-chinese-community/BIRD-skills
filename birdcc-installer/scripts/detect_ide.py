@@ -345,16 +345,16 @@ def marketplace_hint(product: Product, vscode_ext: str, jb_plugin: str) -> str:
         return (
             f"JetBrains Marketplace Plugin ID: {jb_plugin}"
             if jb_plugin
-            else "JetBrains 插件暂未配置。"
+            else "No JetBrains plugin configured."
         )
 
     if product.marketplace == "Visual Studio Marketplace":
-        return f"在 Visual Studio Marketplace 搜索/安装：{vscode_ext}"
+        return f"Search/install in Visual Studio Marketplace: {vscode_ext}"
 
     if "OpenVSX" in product.marketplace:
-        return f"在 OpenVSX 搜索/安装：{vscode_ext}"
+        return f"Search/install in OpenVSX: {vscode_ext}"
 
-    return f"在 {product.name} 的扩展面板搜索/安装：{vscode_ext}"
+    return f"Search/install in the {product.name} extensions panel: {vscode_ext}"
 
 
 def _is_numeric_plugin_id(plugin_id: str) -> bool:
@@ -372,23 +372,23 @@ def deep_link(product: Product, vscode_ext: str, jb_plugin: str) -> str | None:
 
 
 def agent_message(product: Product, status: str) -> str:
-    prefix = f"检测到你安装了 {product.name}。"
+    prefix = f"Detected {product.name} is installed."
 
     if status == "installed":
         return (
             prefix
-            + "BIRD 插件已经安装，可以直接使用 BIRD 配置语法高亮、诊断、lint 与 Agent 协作能力。"
+            + " The BIRD extension is already installed, so syntax highlighting, diagnostics, lint, and Agent collaboration are available."
         )
 
     if product.family == "vscode-like":
         return (
             prefix
-            + "推荐安装 BIRD VS Code/OpenVSX 插件，用于 BIRD 配置语法高亮、诊断、lint、跳转和 AI Agent 辅助修改。"
+            + " Consider installing the BIRD extension for syntax highlighting, diagnostics, lint, go-to-definition, and AI Agent-assisted editing."
         )
 
     return (
         prefix
-        + "推荐安装 BIRD JetBrains 插件，让 IntelliJ 系列 IDE 也能接入 birdcc 的配置诊断与 Agent 工作流。"
+        + " Consider installing the BIRD JetBrains plugin to bring birdcc diagnostics and Agent workflows to IntelliJ-based IDEs."
     )
 
 
@@ -416,7 +416,7 @@ def detect(product: Product, vscode_ext: str, jb_plugin: str) -> Detection | Non
         if not exe:
             item.extension_status = "unknown"
             item.notes.append(
-                "检测到应用，但没有检测到 CLI。可以引导用户安装 Shell Command，或在扩展面板中搜索 BIRD。"
+                "Application detected, but no CLI was found. Guide the user to install the Shell Command or search for BIRD in the extensions panel."
             )
         else:
             installed = list_vscode_extensions(exe)
@@ -431,21 +431,21 @@ def detect(product: Product, vscode_ext: str, jb_plugin: str) -> Detection | Non
                 item.install_command = [exe, "--install-extension", vscode_ext]
             else:
                 item.notes.append(
-                    "CLI 未声明支持 --install-extension，建议走 IDE 扩展面板引导。"
+                    "The CLI does not advertise --install-extension; guide the user to install via the IDE extensions panel."
                 )
 
     elif product.family == "jetbrains":
         if not jb_plugin:
             item.extension_status = "unknown"
-            item.notes.append("未配置 JetBrains Plugin ID。")
+            item.notes.append("No JetBrains plugin ID configured.")
         elif exe:
             item.extension_status = "unknown"
             item.install_command = [exe, "installPlugins", jb_plugin]
-            item.notes.append("JetBrains CLI 安装插件前通常建议先关闭对应 IDE。")
+            item.notes.append("It is usually recommended to close the corresponding IDE before installing plugins with the JetBrains CLI.")
         else:
             item.extension_status = "unknown"
             item.notes.append(
-                "检测到 JetBrains 应用，但没有检测到可用 CLI。建议引导用户在 JetBrains Marketplace 中搜索 BIRD。"
+                "JetBrains application detected, but no usable CLI was found. Guide the user to search for BIRD on JetBrains Marketplace."
             )
 
     item.marketplace_hint = marketplace_hint(product, vscode_ext, jb_plugin)
@@ -455,7 +455,7 @@ def detect(product: Product, vscode_ext: str, jb_plugin: str) -> Detection | Non
 
 def build_pretty_text(detections: list[Detection]) -> str:
     if not detections:
-        return "没有检测到支持的 IDE。"
+        return "No supported IDE detected."
 
     lines: list[str] = []
     for x in detections:
@@ -494,11 +494,11 @@ def build_ui_directives(detections: list[Detection]) -> dict:
         buttons.append(
             {
                 "ide_id": item.id,
-                "title": f"在 {item.name} 中打开 BIRD 插件",
+                "title": f"Open BIRD plugin in {item.name}",
                 "description": (
-                    "一键唤起插件市场并直达 BIRD 扩展"
+                    "Open the extension marketplace and jump to the BIRD extension"
                     if item.family == "vscode-like"
-                    else "访问 JetBrains Marketplace 获取 BIRD 插件"
+                    else "Visit JetBrains Marketplace to get the BIRD plugin"
                 ),
                 "action_type": "open_url",
                 "url": link,
@@ -506,7 +506,7 @@ def build_ui_directives(detections: list[Detection]) -> dict:
         )
 
     return {
-        "message": "检测到你本地的开发环境。birdcc 提供对应 IDE 插件，可用于 BIRD 配置语法高亮、诊断、lint、跳转和 AI Agent 协作。是否需要我帮你打开插件市场页面？",
+        "message": "Detected your local development environment. birdcc provides matching IDE plugins for BIRD config syntax highlighting, diagnostics, lint, go-to-definition, and AI Agent collaboration. Would you like me to open the marketplace page for you?",
         "buttons": buttons,
     }
 
@@ -541,7 +541,7 @@ def main(argv: list[str] | None = None) -> int:
         if not args.confirmed:
             install_results.append(
                 {
-                    "error": "安装操作需要同时提供 --install 和 --confirmed。请先获得用户明确同意后再执行外部安装命令。",
+                    "error": "Install requires both --install and --confirmed. Please obtain explicit user approval before running external install commands.",
                     "skipped": True,
                 }
             )
