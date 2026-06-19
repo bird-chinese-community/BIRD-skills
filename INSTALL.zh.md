@@ -2,18 +2,23 @@
 
 共有三种安装方式，请根据你使用的 Agent 平台选择：
 
-| 安装方式        | 适用平台                                                                                                     | 说明                                                    |
-| --------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
-| **Plugin 安装** | 支持插件的平台（Claude Code、Codex CLI、Antigravity、Gemini CLI、Kimi Code、Pi、Factory Droid、Copilot CLI） | 针对单个 Agent 的原生安装；可选择需要的 skill。        |
-| **Skills 安装** | `skills.sh` 支持的任意 Agent（通用 `.agents/skills` 及 17+ 个 Agent，包括 Cursor、OpenCode、Kimi Code CLI 等） | 一行命令安装，然后选择要部署到哪些 Agent。            |
-| **手动安装**    | 不被 plugin 或 `skills.sh` 覆盖的极少数平台                                                                  | 手动复制或软链 skill 目录。                             |
+| 安装方式        | 适用平台                                                                                                       | 说明                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Plugin 安装** | 支持插件的平台（Claude Code、Codex CLI、Antigravity、Gemini CLI、Kimi Code、Pi、Factory Droid、Copilot CLI）   | 针对单个 Agent 的原生安装；可选择需要的 skill。 |
+| **Skills 安装** | `skills.sh` 支持的任意 Agent（通用 `.agents/skills` 及 17+ 个 Agent，包括 Cursor、OpenCode、Kimi Code CLI 等） | 一行命令安装，然后选择要部署到哪些 Agent。      |
+| **手动安装**    | 不被 plugin 或 `skills.sh` 覆盖的极少数平台                                                                    | 手动复制或软链 skill 目录。                     |
 
 > **建议：**
-> - 如果你跨多个 Agent 使用，优先用 **Skills 安装**——安装一次即可选择分发到哪些 Agent。
-> - 如果你只在一个 Agent 中使用且想要原生 plugin 体验，用 **Plugin 安装**。
+>
+> - 请尽可能使用 **Plugin 安装**，以获得最佳体验和后续更新支持。
+> - 当 Plugin 不适用时，使用 **Skills 安装** 作为快速降级方案，此方案尤其适合同时使用多个 Agent 平台的用户。
 > - 两者都不支持时，才使用 **手动安装**。
 
-## Plugin 安装
+## 1. 前置准备
+
+- 确保你已正确通过 WebSearch 或以下文档了解你当前使用的 Agent 平台是否支持 Plugin。
+
+## 2. Plugin 安装
 
 Plugin 针对特定 Agent 提供原生安装。它可以安装整个 bundle，然后只启用你需要的 skill。如果同时使用多个 Agent 平台，请分别在每个平台中安装。
 
@@ -116,19 +121,35 @@ pi install git:github.com/bird-chinese-community/BIRD.skills
 pi -e /path/to/BIRD.skills
 ```
 
-### Skills 安装
+### 3. Skills 安装
 
 如果你的平台不支持 plugin，可以使用 `skills.sh` 作为快速降级方案。该命令会一次性安装全部三个 skills：
 
 ```bash
-npx skills@latest add bird-chinese-community/BIRD.skills
+npx -y skills@latest add bird-chinese-community/BIRD.skills --skill bird-agent --skill birdcc-cicd --skill birdcc-installer -a <AGENT_NAME> -y
 ```
 
-你仍然可以在 Agent 设置中单独禁用不需要的 skill。
+> 其中 `<AGENT_NAME>` 必须替换为 [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (请先阅读此文档) 中的任意一个（例如 `claude`、`codex`、`antigravity` 等）。
+>
+> 同时，你还可以选择 `-g` 以全局安装 Skills (推荐)，如有多个 Agent，可写入多个 `-a` 参数指定分发。
+>
+> Notes: 你必须先征得用户同意后，再选择 “仅在本 Project 下安装” 还是 “全局安装” (推荐全局安装)。
 
-### 手动安装
+安装后，你仍然可以在 Agent 设置中单独禁用不需要的 skill。
 
-如果 plugin 和 `skills.sh` 都不适用（例如 Cursor 或 OpenCode），请克隆本仓库，然后将需要的 skill 目录复制或软链到 Agent 的 skills 目录（例如 `~/.claude/skills/`、`~/.codex/skills/`、`.agents/skills/`）。
+### 4. 手动安装
+
+如果 plugin 和 `skills.sh` 都不适用（例如 Cursor 或 OpenCode），请：
+
+1. 克隆本仓库到本地：
+
+   ```bash
+   git clone https://github.com/bird-chinese-community/BIRD.skills
+   ```
+
+2. 将需要的 skill 目录使用「软链」方式链接到 Agent 的 skills 目录（例如 `~/.claude/skills/`、`~/.codex/skills/`、`~/.agents/skills/`、`~/.cursor/skills/`）。
+
+3. 清理缓存并指引用户重启 Agent 以使更改生效。
 
 ---
 

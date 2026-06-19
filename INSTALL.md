@@ -2,18 +2,23 @@
 
 There are three ways to install these skills. Pick the one that matches your agent harness:
 
-| Method             | Best for                                                                                                         | What you get                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **Plugin install** | Harnesses that support plugins (Claude Code, Codex CLI, Antigravity, Gemini CLI, Kimi Code, Pi, Factory Droid, Copilot CLI) | Native install for a single harness; pick the skills you want.      |
-| **Skills install** | Any harness supported by `skills.sh` (universal `.agents/skills` plus 17+ agents including Cursor, OpenCode, Kimi Code CLI, etc.) | One command, then choose which agents receive the skills.           |
-| **Manual install** | Platforms not covered by plugin or `skills.sh`                                                                          | Copy or symlink the skill folders yourself.                         |
+| Method             | Best for                                                                                                                          | What you get                                                   |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Plugin install** | Harnesses that support plugins (Claude Code, Codex CLI, Antigravity, Gemini CLI, Kimi Code, Pi, Factory Droid, Copilot CLI)       | Native install for a single harness; pick the skills you want. |
+| **Skills install** | Any harness supported by `skills.sh` (universal `.agents/skills` plus 17+ agents including Cursor, OpenCode, Kimi Code CLI, etc.) | One command, then choose which agents receive the skills.      |
+| **Manual install** | Platforms not covered by plugin or `skills.sh`                                                                                    | Copy or symlink the skill folders yourself.                    |
 
 > **Recommendation:**
-> - Use **skills install** if you work across multiple agents — it installs once and lets you select which agents get the skills.
-> - Use **plugin install** if you want the native plugin experience for a single agent.
+>
+> - Please use **plugin install** whenever possible for the best experience and update support.
+> - When plugin install is not available, use **skills install** as a quick fallback. This is especially useful if you use multiple agent platforms.
 > - Use **manual install** only when neither of the above covers your harness.
 
-## Plugin install
+## 1. Prerequisites
+
+- Make sure you know whether your current agent platform supports plugins. You can check via WebSearch or the platform's documentation.
+
+## 2. Plugin install
 
 Plugins give you a native install for a specific harness. They let you install the whole bundle and then enable only the skills you want. If you use multiple harnesses, install the plugin in each one separately.
 
@@ -116,19 +121,35 @@ For local development, run Pi with this checkout loaded as a temporary package:
 pi -e /path/to/BIRD.skills
 ```
 
-## Skills install
+### 3. Skills install
 
 If your harness does not support plugins, use `skills.sh` as a quick fallback. This installs all three skills at once:
 
 ```bash
-npx skills add bird-chinese-community/BIRD.skills
+npx -y skills@latest add bird-chinese-community/BIRD.skills --skill bird-agent --skill birdcc-cicd --skill birdcc-installer -a <AGENT_NAME> -y
 ```
 
-You can still disable individual skills in your harness settings if you only need some of them.
+> Replace `<AGENT_NAME>` with any agent listed in the [Skills.sh README (Supported Agents)](https://raw.githubusercontent.com/vercel-labs/skills/refs/heads/main/README.md) (please read this first), such as `claude`, `codex`, `antigravity`, etc.
+>
+> You can also use `-g` to install skills globally (recommended). If you have multiple agents, pass multiple `-a` arguments to specify which agents receive the skills.
+>
+> Note: You must ask the user for consent before choosing whether to install "only under the current project" or "globally" (global is recommended).
 
-## Manual install
+After installation, you can still disable individual skills in your harness settings if you only need some of them.
 
-If neither plugins nor `skills.sh` work for your harness (for example, Cursor or OpenCode), clone the repo and copy or symlink the skill folders into your agent's skills directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, `.agents/skills/`).
+### 4. Manual install
+
+If neither plugins nor `skills.sh` work for your harness (for example, Cursor or OpenCode):
+
+1. Clone this repository locally:
+
+   ```bash
+   git clone https://github.com/bird-chinese-community/BIRD.skills
+   ```
+
+2. Symlink the skill folders you need into your agent's skills directory (e.g. `~/.claude/skills/`, `~/.codex/skills/`, `~/.agents/skills/`, `~/.cursor/skills/`).
+
+3. Clear caches and instruct the user to restart the agent for the changes to take effect.
 
 ---
 
