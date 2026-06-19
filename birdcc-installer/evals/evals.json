@@ -30,12 +30,7 @@
           "description": "The agent mentions formatting and/or diagnostics capabilities.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "format",
-            "diagnostic",
-            "lint",
-            "LSP"
-          ]
+          "expected": ["format", "diagnostic", "lint", "LSP"]
         }
       ]
     },
@@ -65,14 +60,7 @@
           "description": "The agent mentions VSCodium or another OpenVSX-based fork.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "VSCodium",
-            "Cursor",
-            "Windsurf",
-            "Trae",
-            "Kiro",
-            "Antigravity"
-          ]
+          "expected": ["VSCodium", "Cursor", "Windsurf", "Trae", "Kiro", "Antigravity"]
         }
       ]
     },
@@ -102,13 +90,7 @@
           "description": "The agent clarifies that the plugin provides highlighting only, not full LSP.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "highlight only",
-            "only syntax",
-            "not include LSP",
-            "no LSP",
-            "manually"
-          ]
+          "expected": ["highlight only", "only syntax", "not include LSP", "no LSP", "manually"]
         }
       ]
     },
@@ -131,23 +113,14 @@
           "description": "The agent mentions vim-plug or another Vim plugin manager.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "vim-plug",
-            "Plug",
-            "Vundle",
-            "pathogen"
-          ]
+          "expected": ["vim-plug", "Plug", "Vundle", "pathogen"]
         },
         {
           "name": "clarifies_highlight_only",
           "description": "The agent clarifies that Vim support is highlighting-only.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "highlight only",
-            "only syntax",
-            "no LSP"
-          ]
+          "expected": ["highlight only", "only syntax", "no LSP"]
         }
       ]
     },
@@ -175,12 +148,7 @@
           "description": "The agent states whether highlighting and/or LSP is supported.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "highlighting",
-            "LSP",
-            "lint",
-            "format"
-          ]
+          "expected": ["highlighting", "LSP", "lint", "format"]
         }
       ]
     },
@@ -196,22 +164,14 @@
           "description": "The agent offers npx / pnpm dlx / yarn dlx as a non-global option.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "npx",
-            "pnpm dlx",
-            "yarn dlx"
-          ]
+          "expected": ["npx", "pnpm dlx", "yarn dlx"]
         },
         {
           "name": "mentions_local_dev_dependency",
           "description": "The agent offers a local devDependency install option.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "dev dependency",
-            "-D",
-            "--save-dev"
-          ]
+          "expected": ["dev dependency", "-D", "--save-dev"]
         },
         {
           "name": "mentions_verification_command",

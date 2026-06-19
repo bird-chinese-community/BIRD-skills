@@ -34,11 +34,7 @@
           "description": "The workflow configures a BIRD version (2 and/or 3).",
           "check": "file_contains_any",
           "target": "workflow.md",
-          "expected": [
-            "bird-version:",
-            "bird-version: \"2\"",
-            "bird-version: \"3\""
-          ]
+          "expected": ["bird-version:", "bird-version: \"2\"", "bird-version: \"3\""]
         },
         {
           "name": "uses_actions_checkout",
@@ -68,12 +64,7 @@
           "description": "The workflow or explanation mentions pnpm caching.",
           "check": "file_contains_any",
           "target": "workflow.md",
-          "expected": [
-            "cache-turbo",
-            "cache-pnpm",
-            "pnpm cache",
-            "cache:"
-          ]
+          "expected": ["cache-turbo", "cache-pnpm", "pnpm cache", "cache:"]
         },
         {
           "name": "includes_fmt_check",
@@ -94,10 +85,7 @@
           "description": "The workflow triggers on pull_request and/or push.",
           "check": "file_contains_any",
           "target": "workflow.md",
-          "expected": [
-            "pull_request:",
-            "push:"
-          ]
+          "expected": ["pull_request:", "push:"]
         }
       ]
     }

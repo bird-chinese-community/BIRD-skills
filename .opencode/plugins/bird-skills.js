@@ -7,7 +7,6 @@
 
 import path from 'path';
 import fs from 'fs';
-import os from 'os';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,7 +16,7 @@ const SKILL_NAMES = ['bird-agent', 'birdcc-installer', 'birdcc-cicd'];
 // Module-level cache for bootstrap content.
 let _bootstrapCache = undefined; // undefined = not yet loaded, null = nothing to inject
 
-const extractAndStripFrontmatter = (content) => {
+const extractAndStripFrontmatter = content => {
   const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) return { frontmatter: {}, content };
 
@@ -29,7 +28,10 @@ const extractAndStripFrontmatter = (content) => {
     const colonIdx = line.indexOf(':');
     if (colonIdx > 0) {
       const key = line.slice(0, colonIdx).trim();
-      const value = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, '');
+      const value = line
+        .slice(colonIdx + 1)
+        .trim()
+        .replace(/^["']|["']$/g, '');
       frontmatter[key] = value;
     }
   }
@@ -82,13 +84,13 @@ When BIRD skills request actions, substitute OpenCode equivalents:
 
 Use OpenCode's native \`skill\` tool to list and load skills.`;
 
-export const BirdSkillsPlugin = async ({ client, directory }) => {
+export const BirdSkillsPlugin = async _args => {
   const repoRoot = path.resolve(__dirname, '../..');
 
   return {
     // Inject skill paths into live config so OpenCode discovers BIRD skills
     // without manual symlinks or config edits.
-    config: async (config) => {
+    config: async config => {
       config.skills = config.skills || {};
       config.skills.paths = config.skills.paths || [];
 
@@ -105,15 +107,15 @@ export const BirdSkillsPlugin = async ({ client, directory }) => {
       const bootstrap = getBootstrapContent();
       if (!bootstrap || !output.messages.length) return;
 
-      const firstUser = output.messages.find((m) => m.info.role === 'user');
+      const firstUser = output.messages.find(m => m.info.role === 'user');
       if (!firstUser || !firstUser.parts.length) return;
 
       // Guard against double injection.
-      if (firstUser.parts.some((p) => p.type === 'text' && p.text.includes('BIRD agent skills'))) {
+      if (firstUser.parts.some(p => p.type === 'text' && p.text.includes('BIRD agent skills'))) {
         return;
       }
 
       firstUser.parts.unshift({ type: 'text', text: bootstrap });
-    }
+    },
   };
 };

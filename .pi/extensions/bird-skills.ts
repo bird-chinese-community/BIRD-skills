@@ -1,17 +1,17 @@
-import { readFileSync } from "node:fs";
-import { basename, dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { readFileSync } from 'node:fs';
+import { basename, dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import type { ExtensionAPI } from '@earendil-works/pi-coding-agent';
 
-const EXTREMELY_IMPORTANT_MARKER = "";
-const BOOTSTRAP_MARKER = "bird-skills:bootstrap for pi";
+const EXTREMELY_IMPORTANT_MARKER = '';
+const BOOTSTRAP_MARKER = 'bird-skills:bootstrap for pi';
 
 const extensionDir = dirname(fileURLToPath(import.meta.url));
-const packageRoot = resolve(extensionDir, "../..");
+const packageRoot = resolve(extensionDir, '../..');
 const skillPaths = [
-  resolve(packageRoot, "bird-agent"),
-  resolve(packageRoot, "birdcc-installer"),
-  resolve(packageRoot, "birdcc-cicd"),
+  resolve(packageRoot, 'bird-agent'),
+  resolve(packageRoot, 'birdcc-installer'),
+  resolve(packageRoot, 'birdcc-cicd'),
 ];
 
 interface CachedSkill {
@@ -20,31 +20,31 @@ interface CachedSkill {
 }
 
 const cachedSkills: Record<string, CachedSkill> = {
-  "bird-agent": { content: null, initialized: false },
-  "birdcc-installer": { content: null, initialized: false },
-  "birdcc-cicd": { content: null, initialized: false },
+  'bird-agent': { content: null, initialized: false },
+  'birdcc-installer': { content: null, initialized: false },
+  'birdcc-cicd': { content: null, initialized: false },
 };
 
 export default function birdSkillsPiExtension(pi: ExtensionAPI) {
   let injectBootstrap = true;
 
-  pi.on("resources_discover", async () => ({
+  pi.on('resources_discover', async () => ({
     skillPaths,
   }));
 
-  pi.on("session_start", async () => {
+  pi.on('session_start', async () => {
     injectBootstrap = true;
   });
 
-  pi.on("session_compact", async () => {
+  pi.on('session_compact', async () => {
     injectBootstrap = true;
   });
 
-  pi.on("agent_end", async () => {
+  pi.on('agent_end', async () => {
     injectBootstrap = false;
   });
 
-  pi.on("context", async (event) => {
+  pi.on('context', async event => {
     if (!injectBootstrap) return;
     if (event.messages.some(messageContainsBootstrap)) return;
 
@@ -52,8 +52,8 @@ export default function birdSkillsPiExtension(pi: ExtensionAPI) {
     if (!bootstrap) return;
 
     const bootstrapMessage = {
-      role: "user" as const,
-      content: [{ type: "text" as const, text: bootstrap }],
+      role: 'user' as const,
+      content: [{ type: 'text' as const, text: bootstrap }],
       timestamp: Date.now(),
     };
 
@@ -69,7 +69,7 @@ export default function birdSkillsPiExtension(pi: ExtensionAPI) {
 }
 
 function getBootstrapContent(): string | null {
-  const skills = skillPaths.map((path) => {
+  const skills = skillPaths.map(path => {
     const name = basename(path);
     const cached = cachedSkills[name];
     if (cached && cached.initialized) {
@@ -80,14 +80,14 @@ function getBootstrapContent(): string | null {
     return { name, body };
   });
 
-  if (skills.every((skill) => skill.body === null)) {
+  if (skills.every(skill => skill.body === null)) {
     return null;
   }
 
   const sections = skills
     .filter((skill): skill is { name: string; body: string } => skill.body !== null)
-    .map((skill) => `## ${skill.name}\n\n${skill.body}`)
-    .join("\n\n---\n\n");
+    .map(skill => `## ${skill.name}\n\n${skill.body}`)
+    .join('\n\n---\n\n');
 
   return `${EXTREMELY_IMPORTANT_MARKER}
 ${BOOTSTRAP_MARKER}
@@ -102,7 +102,7 @@ ${piToolMapping()}
 
 function loadSkillBody(skillPath: string): string | null {
   try {
-    const skillContent = readFileSync(resolve(skillPath, "SKILL.md"), "utf8");
+    const skillContent = readFileSync(resolve(skillPath, 'SKILL.md'), 'utf8');
     return stripFrontmatter(skillContent);
   } catch {
     return null;
@@ -124,14 +124,14 @@ If a skill says to invoke another skill, use Pi's native skill system: load the 
 
 function messageContainsBootstrap(message: unknown): boolean {
   const content = (message as { content?: unknown }).content;
-  if (typeof content === "string") return content.includes(BOOTSTRAP_MARKER);
+  if (typeof content === 'string') return content.includes(BOOTSTRAP_MARKER);
   if (!Array.isArray(content)) return false;
-  return content.some((part) => {
+  return content.some(part => {
     return (
       part &&
-      typeof part === "object" &&
-      (part as { type?: unknown }).type === "text" &&
-      typeof (part as { text?: unknown }).text === "string" &&
+      typeof part === 'object' &&
+      (part as { type?: unknown }).type === 'text' &&
+      typeof (part as { text?: unknown }).text === 'string' &&
       (part as { text: string }).text.includes(BOOTSTRAP_MARKER)
     );
   });
@@ -139,7 +139,7 @@ function messageContainsBootstrap(message: unknown): boolean {
 
 function firstNonCompactionSummaryIndex(messages: unknown[]): number {
   let index = 0;
-  while ((messages[index] as { role?: unknown } | undefined)?.role === "compactionSummary") {
+  while ((messages[index] as { role?: unknown } | undefined)?.role === 'compactionSummary') {
     index += 1;
   }
   return index;

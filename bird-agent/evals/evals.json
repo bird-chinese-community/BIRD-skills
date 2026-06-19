@@ -6,9 +6,7 @@
       "name": "missing-semicolon-diagnosis",
       "prompt": "I have a BIRD2 config file at bird-agent/evals/fixtures/bird.conf. When I run `bird -p -c bird.conf` it fails with a syntax error but I don't understand the message. Can you help me find and fix the problem?",
       "expected_output": "Run birdcc lint on the file, identify the missing semicolon after 'router id 192.0.2.1', and propose a corrected snippet.",
-      "files": [
-        "evals/fixtures/bird.conf"
-      ],
+      "files": ["evals/fixtures/bird.conf"],
       "assertions": [
         {
           "name": "ran_birdcc_lint",
@@ -36,11 +34,7 @@
           "description": "The agent explained why bird -p reported the error at line 3 instead of line 1.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "unexpected PROTOCOL",
-            "expecting ';'",
-            "missing semicolon"
-          ]
+          "expected": ["unexpected PROTOCOL", "expecting ';'", "missing semicolon"]
         },
         {
           "name": "did_not_modify_fixture",
@@ -56,9 +50,7 @@
       "name": "format-preview",
       "prompt": "Please format my BIRD config at bird-agent/evals/fixtures/bird-unformatted.conf. I want to see what changes the formatter would make before you actually write them.",
       "expected_output": "Run birdcc fmt --check on the file, show the diff or formatted output, and ask for confirmation before running birdcc fmt --write.",
-      "files": [
-        "evals/fixtures/bird-unformatted.conf"
-      ],
+      "files": ["evals/fixtures/bird-unformatted.conf"],
       "assertions": [
         {
           "name": "ran_fmt_check",
@@ -72,12 +64,7 @@
           "description": "The agent displayed a diff or the formatted output so the user can preview changes.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "diff",
-            "formatted",
-            "--- ",
-            "+++ "
-          ]
+          "expected": ["diff", "formatted", "--- ", "+++ "]
         },
         {
           "name": "indentation_normalized",
@@ -142,10 +129,7 @@
           "description": "The workflow uses pnpm for package management as requested.",
           "check": "file_contains_any",
           "target": "workflow.md",
-          "expected": [
-            "pnpm",
-            "PNPM"
-          ]
+          "expected": ["pnpm", "PNPM"]
         }
       ]
     },
@@ -154,10 +138,7 @@
       "name": "cross-file-include-diagnosis",
       "prompt": "I have a BIRD config at bird-agent/evals/fixtures/cross-file/main.conf. birdcc lint reports errors that seem to come from an included file. Can you tell me which file has the real problem and what the fix is?",
       "expected_output": "Run birdcc lint on main.conf with cross-file resolution, identify that peers.conf has a missing semicolon after 'local as 64512', and explain that include statements propagate diagnostics from the included file.",
-      "files": [
-        "evals/fixtures/cross-file/main.conf",
-        "evals/fixtures/cross-file/peers.conf"
-      ],
+      "files": ["evals/fixtures/cross-file/main.conf", "evals/fixtures/cross-file/peers.conf"],
       "assertions": [
         {
           "name": "ran_birdcc_lint_on_main",
@@ -185,12 +166,7 @@
           "description": "The agent explained that errors in included files surface through the main file.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "include",
-            "propagat",
-            "surfac",
-            "comes from"
-          ]
+          "expected": ["include", "propagat", "surfac", "comes from"]
         },
         {
           "name": "did_not_modify_fixtures",
@@ -241,10 +217,7 @@
           "description": "The agent warned that birdcc defaults to BIRD2 semantics.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "default",
-            "BIRD2"
-          ]
+          "expected": ["default", "BIRD2"]
         },
         {
           "name": "recommended_runtime_validation",
@@ -267,35 +240,21 @@
           "description": "The agent explained how to install the BIRD-LSP server.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "npm",
-            "pnpm",
-            "@birdcc/lsp",
-            "birdcc lsp"
-          ]
+          "expected": ["npm", "pnpm", "@birdcc/lsp", "birdcc lsp"]
         },
         {
           "name": "provided_nvim_lspconfig_snippet",
           "description": "The agent provided a Lua snippet for nvim-lspconfig or equivalent.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "lspconfig",
-            "vim.lsp.start",
-            "capabilities",
-            "on_attach"
-          ]
+          "expected": ["lspconfig", "vim.lsp.start", "capabilities", "on_attach"]
         },
         {
           "name": "mentioned_filetype_detection",
           "description": "The agent mentioned filetype detection for .conf files.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "filetype",
-            "ftdetect",
-            "autocmd BufRead"
-          ]
+          "expected": ["filetype", "ftdetect", "autocmd BufRead"]
         },
         {
           "name": "mentioned_treesitter_grammar",
@@ -325,12 +284,7 @@
           "description": "The agent distinguished ~ (prefix/containment) from ~= (regex).",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "prefix",
-            "containment",
-            "regex",
-            "regular expression"
-          ]
+          "expected": ["prefix", "containment", "regex", "regular expression"]
         },
         {
           "name": "gave_prefix_example",
@@ -358,13 +312,7 @@
           "description": "The agent referenced official or project documentation.",
           "check": "file_contains_any",
           "target": "transcript.md",
-          "expected": [
-            "bird.xmsl.dev",
-            "docs/",
-            "spec.md",
-            "BIRD",
-            "documentation"
-          ]
+          "expected": ["bird.xmsl.dev", "docs/", "spec.md", "BIRD", "documentation"]
         }
       ]
     }
