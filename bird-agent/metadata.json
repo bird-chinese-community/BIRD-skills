@@ -1,6 +1,6 @@
 {
   "name": "bird-agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "organization": "bird-chinese-community",
   "date": "2026-06-20",
   "abstract": "Write, validate, format, and debug BIRD (BIRD1/2/3) routing daemon configuration files using the birdcc toolchain and BIRD daemon.",

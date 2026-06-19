@@ -1,7 +1,7 @@
 {
   "name": "birdcc-installer",
   "description": "Install BIRD editor support and the birdcc CLI.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "bird-chinese-community"
   },
