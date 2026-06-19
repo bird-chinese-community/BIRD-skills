@@ -1,0 +1,27 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "BIRD Configuration",
+      "description": "Skills for writing, validating, formatting, and debugging BIRD routing daemon configuration files.",
+      "skills": [
+        "bird-agent"
+      ]
+    },
+    {
+      "title": "BIRD Tooling",
+      "description": "Skills for installing BIRD editor support and the birdcc command-line toolkit.",
+      "skills": [
+        "birdcc-installer"
+      ]
+    },
+    {
+      "title": "BIRD CI/CD",
+      "description": "Skills for adding setup-birdcc to GitHub Actions workflows.",
+      "skills": [
+        "birdcc-cicd"
+      ]
+    }
+  ]
+}
