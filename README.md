@@ -57,7 +57,12 @@ Antigravity runs the plugin's session-start hook, so the skills are active from 
 
 ### Codex App
 
-In the Codex app, click on **Plugins** in the sidebar, search for `bird-chinese-community/BIRD.skills`, and install the individual skills.
+Codex App shares plugin configuration with Codex CLI. Side-load via the CLI first, then the skills are available inside the App:
+
+```bash
+codex plugin marketplace add bird-chinese-community/BIRD.skills
+# Then inside Codex, use /plugins to install individual skills
+```
 
 ### Codex CLI
 
@@ -68,13 +73,7 @@ codex plugin marketplace add bird-chinese-community/BIRD.skills
 
 ### Cursor
 
-In Cursor Agent chat, install from marketplace:
-
-```text
-/add-plugin BIRD.skills
-```
-
-Or search for "BIRD skills" in the plugin marketplace.
+Cursor does not currently support side-loading skills directly from a GitHub repository. Use [Manual install](#manual-install) below to copy or symlink the skill folders into Cursor's skills directory.
 
 ### Factory Droid
 

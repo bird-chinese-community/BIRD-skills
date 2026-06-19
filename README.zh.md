@@ -57,7 +57,12 @@ Antigravity 会在会话启动时运行插件钩子，因此 skills 从第一条
 
 ### Codex App
 
-在 Codex App 中，点击侧边栏的 **Plugins**，搜索 `bird-chinese-community/BIRD.skills`，然后安装所需的单个 skill。
+Codex App 与 Codex CLI 共享插件配置。先通过 CLI 侧载，App 中即可使用这些 skills：
+
+```bash
+codex plugin marketplace add bird-chinese-community/BIRD.skills
+# 然后在 Codex 内使用 /plugins 安装单个 skill
+```
 
 ### Codex CLI
 
@@ -68,13 +73,7 @@ codex plugin marketplace add bird-chinese-community/BIRD.skills
 
 ### Cursor
 
-在 Cursor Agent 聊天中，从插件市场安装：
-
-```text
-/add-plugin BIRD.skills
-```
-
-或在插件市场中搜索 "BIRD skills"。
+Cursor 目前不支持直接从 GitHub 仓库侧载 skills。请使用下方的 [手动安装](#手动安装)，将需要的 skill 目录复制或软链到 Cursor 的 skills 目录。
 
 ### Factory Droid
 
