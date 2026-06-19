@@ -1,5 +1,9 @@
 # BIRD.skills (Agent Skills)
 
+[English](./README.md) | [中文](./README.zh.md)
+
+[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE) [![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers) [![GitHub forks](https://img.shields.io/github/forks/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/forks)
+
 > Agent skills for writing, validating, formatting, and shipping BIRD (BIRD1/2/3) routing daemon configurations.
 
 ## Which skill do I need?
@@ -37,7 +41,6 @@ The agent will use the right skill, run `birdcc lint` / `fmt`, validate with `bi
 ```prompt
 Read https://raw.githubusercontent.com/bird-chinese-community/BIRD.skills/main/INSTALL.md and install the BIRD skills for my harness.
 ```
-
 
 ## Security
 

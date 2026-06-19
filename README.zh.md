@@ -1,5 +1,12 @@
 # BIRD.skills（Agent Skills）
 
+[English](./README.md) | 中文
+
+[![License](https://img.shields.io/github/license/bird-chinese-community/BIRD.skills)](./LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/forks)
+[![Last commit](https://img.shields.io/github/last-commit/bird-chinese-community/BIRD.skills)](https://github.com/bird-chinese-community/BIRD.skills/commits/main)
+
 > 为 BIRD（BIRD1/2/3）路由守护进程提供编写、验证、格式化与 CI/CD 一站式支持的 Agent Skills。
 
 ## 按场景选择 Skill
