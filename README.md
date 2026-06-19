@@ -34,6 +34,8 @@ The agent will use the right skill, run `birdcc lint` / `fmt`, validate with `bi
 
 ## Installation
 
+Installation differs by harness. If you use more than one, install the skills separately for each one.
+
 ### Claude Code
 
 ```bash
@@ -43,11 +45,95 @@ The agent will use the right skill, run `birdcc lint` / `fmt`, validate with `bi
 /plugin install birdcc-cicd@bird-skills
 ```
 
+### Antigravity
+
+Install the BIRD skills plugin from this repository:
+
+```bash
+agy plugin install https://github.com/bird-chinese-community/BIRD.skills
+```
+
+Antigravity runs the plugin's session-start hook, so the skills are active from the first message. Reinstall with the same command to update.
+
+### Codex App
+
+In the Codex app, click on **Plugins** in the sidebar, search for `bird-chinese-community/BIRD.skills`, and install the individual skills.
+
 ### Codex CLI
 
 ```bash
 codex plugin marketplace add bird-chinese-community/BIRD.skills
 # Then inside Codex, use /plugins to install individual skills
+```
+
+### Cursor
+
+In Cursor Agent chat, install from marketplace:
+
+```text
+/add-plugin BIRD.skills
+```
+
+Or search for "BIRD skills" in the plugin marketplace.
+
+### Factory Droid
+
+Register the marketplace:
+
+```bash
+droid plugin marketplace add https://github.com/bird-chinese-community/BIRD.skills
+```
+
+Install the skills:
+
+```bash
+droid plugin install bird-agent@BIRD.skills
+droid plugin install birdcc-installer@BIRD.skills
+droid plugin install birdcc-cicd@BIRD.skills
+```
+
+### Gemini CLI
+
+Install the extension:
+
+```bash
+gemini extensions install https://github.com/bird-chinese-community/BIRD.skills
+```
+
+Update later:
+
+```bash
+gemini extensions update BIRD.skills
+```
+
+### GitHub Copilot CLI
+
+Register the marketplace:
+
+```bash
+copilot plugin marketplace add bird-chinese-community/BIRD.skills
+```
+
+Install the skills:
+
+```bash
+copilot plugin install bird-agent@bird-chinese-community/BIRD.skills
+copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
+copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
+```
+
+### Pi
+
+Install the skills as a Pi package from this repository:
+
+```bash
+pi install git:github.com/bird-chinese-community/BIRD.skills
+```
+
+For local development, run Pi with this checkout loaded as a temporary package:
+
+```bash
+pi -e /path/to/BIRD.skills
 ```
 
 ### skills.sh

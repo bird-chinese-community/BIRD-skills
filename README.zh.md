@@ -34,6 +34,8 @@ Agent 会自动匹配对应 Skill，按需运行 `birdcc lint` / `fmt`、通过 
 
 ## 安装方式
 
+安装方式因 Agent 平台而异。如果同时使用多个平台，请分别安装。
+
 ### Claude Code
 
 ```bash
@@ -43,11 +45,95 @@ Agent 会自动匹配对应 Skill，按需运行 `birdcc lint` / `fmt`、通过 
 /plugin install birdcc-cicd@bird-skills
 ```
 
+### Antigravity
+
+从本仓库安装 BIRD skills 插件：
+
+```bash
+agy plugin install https://github.com/bird-chinese-community/BIRD.skills
+```
+
+Antigravity 会在会话启动时运行插件钩子，因此 skills 从第一条消息起即可用。使用相同命令重新安装即可更新。
+
+### Codex App
+
+在 Codex App 中，点击侧边栏的 **Plugins**，搜索 `bird-chinese-community/BIRD.skills`，然后安装所需的单个 skill。
+
 ### Codex CLI
 
 ```bash
 codex plugin marketplace add bird-chinese-community/BIRD.skills
 # 然后在 Codex 内使用 /plugins 安装单个 skill
+```
+
+### Cursor
+
+在 Cursor Agent 聊天中，从插件市场安装：
+
+```text
+/add-plugin BIRD.skills
+```
+
+或在插件市场中搜索 "BIRD skills"。
+
+### Factory Droid
+
+注册插件市场：
+
+```bash
+droid plugin marketplace add https://github.com/bird-chinese-community/BIRD.skills
+```
+
+安装 skills：
+
+```bash
+droid plugin install bird-agent@BIRD.skills
+droid plugin install birdcc-installer@BIRD.skills
+droid plugin install birdcc-cicd@BIRD.skills
+```
+
+### Gemini CLI
+
+安装扩展：
+
+```bash
+gemini extensions install https://github.com/bird-chinese-community/BIRD.skills
+```
+
+后续更新：
+
+```bash
+gemini extensions update BIRD.skills
+```
+
+### GitHub Copilot CLI
+
+注册插件市场：
+
+```bash
+copilot plugin marketplace add bird-chinese-community/BIRD.skills
+```
+
+安装 skills：
+
+```bash
+copilot plugin install bird-agent@bird-chinese-community/BIRD.skills
+copilot plugin install birdcc-installer@bird-chinese-community/BIRD.skills
+copilot plugin install birdcc-cicd@bird-chinese-community/BIRD.skills
+```
+
+### Pi
+
+从本仓库将 BIRD skills 作为 Pi 包安装：
+
+```bash
+pi install git:github.com/bird-chinese-community/BIRD.skills
+```
+
+本地开发时，可以将本仓库作为临时包加载运行 Pi：
+
+```bash
+pi -e /path/to/BIRD.skills
 ```
 
 ### skills.sh
