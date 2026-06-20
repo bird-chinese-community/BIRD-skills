@@ -4,8 +4,13 @@
       "command": "uv",
       "args": [
         "run",
-        "mcp/bird-docs-query-mcp/server.py"
-      ]
+        "--directory",
+        "mcp/bird-docs-query-mcp",
+        "server.py"
+      ],
+      "env": {
+        "FASTMCP_SHOW_SERVER_BANNER": "false"
+      }
     }
   }
 }

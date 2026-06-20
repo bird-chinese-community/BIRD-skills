@@ -1,0 +1,22 @@
+{
+  "name": "bird-troubleshooting",
+  "description": "Diagnose complex BIRD routing-daemon problems that cross configuration, source-code, and tooling boundaries.",
+  "version": "1.1.0",
+  "author": {
+    "name": "bird-chinese-community"
+  },
+  "homepage": "https://github.com/bird-chinese-community/BIRD.skills/tree/main/bird-troubleshooting",
+  "repository": "https://github.com/bird-chinese-community/BIRD.skills",
+  "license": "MIT",
+  "keywords": [
+    "bird",
+    "bird2",
+    "bird3",
+    "troubleshooting",
+    "diagnostics",
+    "debug",
+    "birdcc"
+  ],
+  "skills": ".",
+  "agents": "agents/"
+}

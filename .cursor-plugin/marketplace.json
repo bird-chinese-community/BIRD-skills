@@ -11,7 +11,8 @@
     {
       "name": "bird-agent",
       "description": "Write, validate, format, and debug BIRD routing daemon configs with parser-backed diagnostics.",
-      "source": "./bird-agent"
+      "source": "./bird-agent",
+      "version": "1.1.0"
     },
     {
       "name": "bird-source-explorer",
@@ -28,12 +29,14 @@
     {
       "name": "birdcc-cicd",
       "description": "Add setup-birdcc to GitHub Actions workflows.",
-      "source": "./birdcc-cicd"
+      "source": "./birdcc-cicd",
+      "version": "1.1.0"
     },
     {
       "name": "birdcc-installer",
       "description": "Install BIRD editor support and the birdcc CLI.",
-      "source": "./birdcc-installer"
+      "source": "./birdcc-installer",
+      "version": "1.1.0"
     }
   ]
 }

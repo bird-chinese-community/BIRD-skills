@@ -18,7 +18,8 @@
         "installation": "AVAILABLE"
       },
       "category": "Coding",
-      "description": "Write, validate, format, and debug BIRD routing daemon configs with parser-backed diagnostics."
+      "description": "Write, validate, format, and debug BIRD routing daemon configs with parser-backed diagnostics.",
+      "version": "1.1.0"
     },
     {
       "name": "bird-source-explorer",
@@ -56,7 +57,8 @@
         "installation": "AVAILABLE"
       },
       "category": "Coding",
-      "description": "Add setup-birdcc to GitHub Actions workflows."
+      "description": "Add setup-birdcc to GitHub Actions workflows.",
+      "version": "1.1.0"
     },
     {
       "name": "birdcc-installer",
@@ -68,7 +70,8 @@
         "installation": "AVAILABLE"
       },
       "category": "Coding",
-      "description": "Install BIRD editor support and the birdcc CLI."
+      "description": "Install BIRD editor support and the birdcc CLI.",
+      "version": "1.1.0"
     }
   ]
 }
