@@ -10,13 +10,17 @@
 
 | If your pain point is...                                                          | Use this skill                           |
 | --------------------------------------------------------------------------------- | ---------------------------------------- |
-| "I need to write or fix `bird.conf`, `bird2.conf`, `bird3.conf`, or `bird6.conf`" | [`bird-agent`](./bird-agent)             |
-| "I need editor support or the `birdcc` CLI installed"                             | [`birdcc-installer`](./birdcc-installer) |
-| "I want BIRD linting or formatting in GitHub Actions"                             | [`birdcc-cicd`](./birdcc-cicd)           |
+| "I need to write or fix `bird.conf`, `bird2.conf`, `bird3.conf`, or `bird6.conf`" | [`bird-agent`](./bird-agent)                 |
+| "I need editor support or the `birdcc` CLI installed"                             | [`birdcc-installer`](./birdcc-installer)     |
+| "I want BIRD linting or formatting in GitHub Actions"                             | [`birdcc-cicd`](./birdcc-cicd)               |
+| "I want to understand how BIRD implements something internally"                   | [`bird-source-explorer`](./bird-source-explorer) |
+| "I need to diagnose a BIRD daemon crash or runtime issue"                         | [`bird-troubleshooting`](./bird-troubleshooting) |
 
 ### Skill descriptions
 
 - **[`bird-agent`](./bird-agent)** — Write, validate, format, and debug BIRD (BIRD1/2/3) routing daemon configs. Use when the user mentions `bird.conf`, `bird2.conf`, `bird3.conf`, `bird6.conf`, `bird.config.json`, `birdcc lint/fmt`, `bird -p` validation, BIRD filter syntax, or BGP/routing configuration questions.
+- **[`bird-source-explorer`](./bird-source-explorer)** — Explore the BIRD C source code to answer implementation-level questions. Use when the user asks how a feature, protocol, filter function, or attribute is implemented, or suspects a BIRD bug.
+- **[`bird-troubleshooting`](./bird-troubleshooting)** — Diagnose complex BIRD daemon problems by orchestrating config, source, and tooling diagnostics. Use when the daemon fails to start, crashes, or behaves unexpectedly after lint passes.
 - **[`birdcc-installer`](./birdcc-installer)** — Install BIRD editor support and the `birdcc` CLI. Use when the user asks about VSCode/VSCodium/Cursor/Windsurf/Trae/Kiro/Antigravity/Neovim/Vim/JetBrains BIRD plugins, or installing the `birdcc` command-line toolkit.
 - **[`birdcc-cicd`](./birdcc-cicd)** — Add the `setup-birdcc` GitHub Action to CI/CD workflows. Use when the user wants to lint, format, or validate BIRD configs in GitHub Actions.
 

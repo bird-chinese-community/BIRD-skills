@@ -10,13 +10,17 @@
 
 | 使用场景                                                               | 推荐 Skill                               |
 | ---------------------------------------------------------------------- | ---------------------------------------- |
-| 需要编写或修复 `bird.conf`、`bird2.conf`、`bird3.conf` 或 `bird6.conf` | [`bird-agent`](./bird-agent)             |
-| 需要安装编辑器支持或 `birdcc` 命令行工具                               | [`birdcc-installer`](./birdcc-installer) |
-| 想在 GitHub Actions 中校验或格式化 BIRD 配置                           | [`birdcc-cicd`](./birdcc-cicd)           |
+| 需要编写或修复 `bird.conf`、`bird2.conf`、`bird3.conf` 或 `bird6.conf`     | [`bird-agent`](./bird-agent)                 |
+| 想了解 BIRD 内部实现原理                                               | [`bird-source-explorer`](./bird-source-explorer) |
+| 需要诊断 BIRD 守护进程崩溃或运行时异常                                 | [`bird-troubleshooting`](./bird-troubleshooting) |
+| 需要安装编辑器支持或 `birdcc` 命令行工具                               | [`birdcc-installer`](./birdcc-installer)     |
+| 想在 GitHub Actions 中校验或格式化 BIRD 配置                           | [`birdcc-cicd`](./birdcc-cicd)               |
 
 ### Skill 简介
 
 - **[`bird-agent`](./bird-agent)** — 编写、验证、格式化和调试 BIRD（BIRD1/2/3）路由守护进程配置。当用户提到 `bird.conf`、`bird2.conf`、`bird3.conf`、`bird6.conf`、`bird.config.json`、`birdcc lint/fmt`、`bird -p` 验证、BIRD filter 语法或 BGP/路由配置问题时使用。
+- **[`bird-source-explorer`](./bird-source-explorer)** — 探索 BIRD C 源码，回答实现层面的问题。当用户询问某个特性、协议、filter 函数或属性在 BIRD 内部如何实现，或怀疑是 BIRD bug 时使用。
+- **[`bird-troubleshooting`](./bird-troubleshooting)** — 通过编排配置、源码和工具链诊断来排查复杂的 BIRD 守护进程问题。当守护进程无法启动、崩溃，或在 lint 通过后行为异常时使用。
 - **[`birdcc-installer`](./birdcc-installer)** — 安装 BIRD 编辑器支持与 `birdcc` CLI。当用户询问 VSCode/VSCodium/Cursor/Windsurf/Trae/Kiro/Antigravity/Neovim/Vim/JetBrains 的 BIRD 插件，或安装 `birdcc` 命令行工具集时使用。
 - **[`birdcc-cicd`](./birdcc-cicd)** — 将 `setup-birdcc` GitHub Action 添加到 CI/CD 工作流。当用户希望在 GitHub Actions 中 lint、format 或验证 BIRD 配置时使用。
 
