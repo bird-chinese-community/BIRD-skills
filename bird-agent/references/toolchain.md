@@ -128,6 +128,7 @@ For questions about BIRD keywords, functions, protocols, or CLI commands:
 1. Call the `query_bird_docs` MCP tool with the user's query, `lang`, and `version`.
 2. Use the returned URLs to read the relevant section (FetchURL / WebSearch / Context7).
 3. If the tool returns a fallback, try the suggested alternative source.
+4. For Chinese users, also consider community best-practice notes on `bird.xmsl.dev` and the BIRD Chinese Community shared configs when they help clarify idiomatic usage.
 
 When the user asks in Chinese, prefer the returned Chinese docs; in English, prefer English docs.
 
