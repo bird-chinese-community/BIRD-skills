@@ -68,6 +68,8 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
+    if not root.is_dir():
+        parser.error(f"--root must be a directory: {root}")
 
     data = {
         "birdcc_bin": shutil.which("birdcc"),

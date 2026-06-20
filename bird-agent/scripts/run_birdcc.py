@@ -24,8 +24,10 @@ from pathlib import Path
 VALID_SUBCOMMANDS = {"lint", "fmt"}
 MAX_OUTPUT_BYTES = 2 * 1024 * 1024
 
-# Unsafe shell metacharacters to reject in --validate-command templates.
-_VALIDATE_COMMAND_RE = re.compile(r"[;&|`$()<>'\"!\n\r]")
+# Whitelist for --validate-command templates. Only simple command characters plus
+# the required {file} placeholder are allowed; this blocks shell metacharacters
+# such as backticks, pipes, semicolons, globs, and escapes.
+_VALIDATE_COMMAND_RE = re.compile(r"^[A-Za-z0-9_./\- ]*\{file\}[A-Za-z0-9_./\- ]*$")
 
 
 def fail(message: str, hint: str | None = None, code: int = 1) -> int:
@@ -81,7 +83,7 @@ def build_command(args: argparse.Namespace) -> list[str]:
         if args.validate_command:
             if _VALIDATE_COMMAND_RE.search(args.validate_command):
                 raise ValueError(
-                    "--validate-command contains unsafe shell metacharacters"
+                    "--validate-command must contain {file} and only safe command characters"
                 )
             cmd.extend(["--validate-command", args.validate_command])
     elif args.subcommand == "fmt":

@@ -16,9 +16,11 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -27,12 +29,21 @@ FRONTMATTER_VERSION_RE = re.compile(
     r"^(\s+version:\s*)['\"]?[^'\"\n]*['\"]?$", re.MULTILINE
 )
 
+# Marketplace manifests that must list every discovered skill.
+_MARKETPLACE_PATHS = [
+    ".github/plugin/marketplace.json",
+    ".cursor-plugin/marketplace.json",
+    ".claude-plugin/marketplace.json",
+    ".agents/plugins/marketplace.json",
+]
+
 
 def discover_skills(root: Path) -> list[str]:
     skills: list[str] = []
     for entry in sorted(root.iterdir()):
         if (
             entry.is_dir()
+            and not entry.is_symlink()
             and not entry.name.startswith(".")
             and entry.name != "template"
             and (entry / "SKILL.md").is_file()
@@ -51,7 +62,21 @@ def load_json(path: Path) -> object | None:
 
 
 def save_json(path: Path, data: object) -> None:
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    """Write JSON atomically so interrupted writes cannot corrupt the file."""
+    text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+    fd, tmp = tempfile.mkstemp(
+        dir=path.parent, prefix=f".{path.name}.", suffix=".tmp"
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except FileNotFoundError:
+            pass
+        raise
 
 
 def update_json_version(path: Path, new_version: str, dry_run: bool) -> bool:
@@ -102,11 +127,13 @@ def update_skill_frontmatter(skill_dir: Path, new_version: str, dry_run: bool) -
         return False
     frontmatter = text[3:end]
     rest = text[end:]
-    new_frontmatter, count = FRONTMATTER_VERSION_RE.subn(
+    new_frontmatter = FRONTMATTER_VERSION_RE.sub(
         f'\\1"{new_version}"', frontmatter
     )
-    if count == 0:
+    if new_frontmatter == frontmatter:
         return False
+
+    count = len(FRONTMATTER_VERSION_RE.findall(frontmatter))
     print(
         f"  ✏️  {skill_md}: metadata.version -> {new_version} ({count} occurrence{'s' if count > 1 else ''})"
     )
@@ -163,16 +190,16 @@ def default_category(marketplace_path: Path, fallback: str = "development") -> s
     return fallback
 
 
+def _marketplace_paths(root: Path) -> list[Path]:
+    return [root / rel for rel in _MARKETPLACE_PATHS]
+
+
 def sync_marketplace_plugins(
     root: Path, skills: list[str], new_version: str, dry_run: bool
 ) -> bool:
     changed_any = False
-    for path in sorted(root.rglob("marketplace.json")):
-        rel_parts = path.relative_to(root).parts
-        if any(
-            part in (".git", "node_modules", ".worktrees", ".venv", "__pycache__")
-            for part in rel_parts
-        ):
+    for path in _marketplace_paths(root):
+        if not path.is_file():
             continue
 
         data = load_json(path)
@@ -200,7 +227,8 @@ def sync_marketplace_plugins(
 
             if skill in existing_by_name:
                 entry = existing_by_name[skill]
-                if isinstance(entry.get("version"), str) and entry["version"] != new_version:
+                current_version = entry.get("version")
+                if not isinstance(current_version, str) or current_version != new_version:
                     entry["version"] = new_version
                     changed = True
                     print(f"  ✏️  {path}: plugins/{skill}/version -> {new_version}")
@@ -298,18 +326,10 @@ def main() -> int:
     # Root plugin manifest
     changed_any |= sync_root_plugin_json(root, skills, args.version, args.dry_run)
 
-    # Other top-level manifests
-    for manifest_name in ("plugin.json", "marketplace.json"):
-        for path in sorted(root.rglob(manifest_name)):
-            rel_parts = path.relative_to(root).parts
-            if any(
-                part in (".git", "node_modules", ".worktrees", ".venv", "__pycache__")
-                for part in rel_parts
-            ):
-                continue
-            changed_any |= update_json_version(path, args.version, args.dry_run)
-
-    # package.json (top-level only)
+    # Other top-level manifests with explicit paths
+    changed_any |= update_json_version(
+        root / ".kimi-plugin" / "plugin.json", args.version, args.dry_run
+    )
     changed_any |= update_json_version(root / "package.json", args.version, args.dry_run)
 
     # Marketplace plugin lists
