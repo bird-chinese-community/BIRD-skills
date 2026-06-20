@@ -1,0 +1,12 @@
+interface:
+  display_name: 'BIRD Source Explorer'
+  short_description: 'Explore the BIRD routing daemon C source code to answer implementation-level questions.'
+  icon_small: ''
+  icon_large: ''
+  brand_color: '#10B981'
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools: []

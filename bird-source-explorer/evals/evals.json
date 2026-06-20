@@ -1,0 +1,36 @@
+{
+  "evals": [
+    {
+      "id": "bird-source-explorer-001",
+      "name": "BGP attribute implementation",
+      "prompt": "How does BIRD implement the BGP LOCAL_PREF attribute?",
+      "expected_output": "Cites proto/bgp/attr.c and explains the attribute encoding/decoding path.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "proto/bgp/attr.c"
+        },
+        {
+          "type": "contains",
+          "value": "LOCAL_PREF"
+        }
+      ]
+    },
+    {
+      "id": "bird-source-explorer-002",
+      "name": "Filter function location",
+      "prompt": "Where is the bgp_path.prepend filter function implemented?",
+      "expected_output": "Points to filter/f-inst.c or equivalent and mentions the prepend function.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "filter/"
+        },
+        {
+          "type": "contains",
+          "value": "prepend"
+        }
+      ]
+    }
+  ]
+}
